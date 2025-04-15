@@ -10,17 +10,14 @@ db.serialize(() => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       mail TEXT NOT NULL UNIQUE,
       nom TEXT NOT NULL,
-      age INTEGER
+      password TEXT NOT NULL,
     )
   `);
 
   // Insère un utilisateur
-  const stmt = db.prepare("INSERT INTO utilisateurs (mail, nom, age) VALUES (?, ?, ?)");
-  if (stmt.run("caca@prout", "Alice", 30)) {
-    console.error("Erreur lors de l'insertion de l'utilisateur : caca@prout");
-  }
-  //stmt.run("caca@prouet", "Bob", 25);
-  //stmt.run('example@mail.com', 'John Doe', 30);
+  const stmt = db.prepare("INSERT INTO utilisateurs (mail, nom, password) VALUES (?, ?, ?)");
+  stmt.run("caca@prouet", "Bob");
+  stmt.run('example@mail.com', 'John Doe');
   stmt.finalize();
 
   // Affiche tous les utilisateurs
