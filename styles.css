@@ -1,0 +1,11 @@
+body{
+    background: linear-gradient(90deg, #F62992 , #6B0AB8 , #340DA4 , #476AED , #50CFEF);
+}
+
+/*
+h1 {
+    background: linear-gradient(-90deg, #F62992, #6B0AB8, #340DA4, #476AED, #50CFEF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+*/
