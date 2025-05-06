@@ -1,5 +1,12 @@
 body{
+    text-align: center;
     background: linear-gradient(90deg, #F62992 , #6B0AB8 , #340DA4 , #476AED , #50CFEF);
+}
+
+p{
+    font-size: 20px;
+    font-family: 'Apple Chancery', cursive;
+    color: #000000;
 }
 
 /*
