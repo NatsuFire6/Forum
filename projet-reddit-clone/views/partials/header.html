@@ -1,0 +1,16 @@
+<header>
+    <a href="/">Reddit Clone</a>
+    <% if (user) { %>
+      <a href="/posts/create">Créer un post</a>
+      <a href="/notifications">Notifications</a>
+      <a href="/messages">Messages</a>
+      <a href="/user/<%= user.username %>">Profil</a>
+      <form action="/logout" method="POST" style="display:inline;">
+        <button type="submit">Déconnexion</button>
+      </form>
+    <% } else { %>
+      <a href="/login">Connexion</a>
+      <a href="/register">Inscription</a>
+    <% } %>
+  </header>
+  

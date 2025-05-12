@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reddit Clone - Accueil</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <main class="content">
+    <div class="post-feed">
+      <% posts.forEach(post => { %>
+        <div class="post">
+          <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
+          <p><%= post.content.substring(0, 150) %>...</p>
+          <div class="post-meta">
+            Posté par <a href="/user/<%= post.author %>"><%= post.author %></a> le <%= post.date %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

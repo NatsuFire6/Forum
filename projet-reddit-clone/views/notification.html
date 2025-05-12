@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Notifications - Reddit Clone</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <main class="notifications">
+    <h1>Notifications</h1>
+    <% notifications.forEach(note => { %>
+      <div class="notification">
+        <p><%= note.message %></p>
+        <small><%= note.date %></small>
+      </div>
+    <% }) %>
+  </main>
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Créer un post - Reddit Clone</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <main class="create-post">
+    <h1>Créer un nouveau post</h1>
+    <form action="/posts" method="POST">
+      <label for="title">Titre :</label>
+      <input type="text" name="title" id="title" required>
+      <label for="content">Contenu :</label>
+      <textarea name="content" id="content" required></textarea>
+      <button type="submit">Publier</button>
+    </form>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

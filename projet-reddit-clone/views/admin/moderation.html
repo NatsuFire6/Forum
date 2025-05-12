@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Modération - Reddit Clone</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <main class="moderation-panel">
+    <h1>Modération</h1>
+    <% posts.forEach(post => { %>
+      <div class="post">
+        <h2><%= post.title %></h2>
+        <p><%= post.content %></p>
+        <form method="POST" action="/admin/posts/<%= post.id %>/delete">
+          <button type="submit">Supprimer</button>
+        </form>
+        <a href="/admin/posts/<%= post.id %>/edit">Modifier</a>
+      </div>
+    <% }) %>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

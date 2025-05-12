@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Messages - Reddit Clone</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <main class="inbox">
+    <h1>Messages</h1>
+    <% conversations.forEach(conv => { %>
+      <div class="conversation">
+        <a href="/messages/<%= conv.user %>">Conversation avec <%= conv.user %></a>
+      </div>
+    <% }) %>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

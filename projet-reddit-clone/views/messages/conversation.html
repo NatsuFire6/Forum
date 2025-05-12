@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversation - Reddit Clone</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <main class="conversation-thread">
+    <h1>Conversation avec <%= user %></h1>
+    <div class="messages">
+      <% messages.forEach(msg => { %>
+        <div class="message <%= msg.fromSelf ? 'sent' : 'received' %>">
+          <p><%= msg.content %></p>
+        </div>
+      <% }) %>
+    </div>
+    <form action="/messages/<%= user %>" method="POST">
+      <textarea name="content" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

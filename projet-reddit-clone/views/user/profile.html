@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profil de <%= user.username %> - Reddit Clone</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <main class="profile">
+    <h1>Profil de <%= user.username %></h1>
+    <p>Email : <%= user.email %></p>
+    <p>Abonnés : <%= followersCount %> | Abonnements : <%= followingCount %></p>
+
+    <section>
+      <h2>Posts</h2>
+      <% posts.forEach(post => { %>
+        <div class="post">
+          <a href="/posts/<%= post.id %>"><%= post.title %></a>
+        </div>
+      <% }) %>
+    </section>
+
+    <section>
+      <h2>Commentaires</h2>
+      <% comments.forEach(comment => { %>
+        <div class="comment">
+          <p><%= comment.content %></p>
+        </div>
+      <% }) %>
+    </section>
+
+    <section>
+      <h2>Likes</h2>
+      <% likes.forEach(post => { %>
+        <div class="post">
+          <a href="/posts/<%= post.id %>"><%= post.title %></a>
+        </div>
+      <% }) %>
+    </section>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>
