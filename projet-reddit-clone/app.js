@@ -4,6 +4,9 @@ const session = require('express-session');
 const SQLiteStore = require('connect-sqlite3')(session);
 const path = require('path');
 const app = express();
+require('./config/database');
+require('./config/init_db_reddit');
+
 
 // 📦 Configuration
 app.use(express.urlencoded({ extended: true }));
@@ -30,13 +33,13 @@ app.use((req, res, next) => {
 });
 
 // 📚 Routes
-app.use('/', require('./routes/index'));
-app.use('/auth', require('./routes/auth'));
-app.use('/posts', require('./routes/posts'));
-app.use('/user', require('./routes/users'));
-app.use('/messages', require('./routes/messages'));
-app.use('/notifications', require('./routes/notifications'));
-app.use('/admin', require('./routes/adminroutes'));
+app.use('/', require('./routes/home'));
+app.use('/auth', require('./routes/authRoutes'));
+app.use('/posts', require('./routes/postRoutes'));
+app.use('/user', require('./routes/userRoutes'));
+app.use('/messages', require('./routes/messageRoutes'));
+app.use('/notifications', require('./routes/notificationRoutes'));
+app.use('/admin', require('./routes/adminRoutes'));
 
 // 🛠 404
 app.use((req, res) => {

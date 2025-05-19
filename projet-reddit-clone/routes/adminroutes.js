@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
-const { ensureAdmin } = require('../middlewares/auth'); // middleware à créer
+const { ensureAdmin } = require('../middlewares/authMiddlewarre'); // middleware à créer
 
 // 🛡️ Voir tous les posts pour modération
 router.get('/posts', ensureAdmin, (req, res) => {

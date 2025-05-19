@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config/database');
 
 // Middleware d'authentification (à créer dans middlewares/auth.js)
-const { ensureAuthenticated } = require('../middlewares/auth');
+const { ensureAuthenticated } = require('../middlewares/authMiddlewarre');
 
 // 📥 Afficher la boîte de réception
 router.get('/', ensureAuthenticated, (req, res) => {
@@ -53,6 +53,11 @@ router.get('/conversation/:username', ensureAuthenticated, (req, res) => {
 router.post('/send', ensureAuthenticated, (req, res) => {
   const senderId = req.session.user.id;
   const { to, content } = req.body;
+
+  // Prevent sending empty or whitespace-only messages
+  if (!content || !content.trim()) {
+    return res.status(400).send('Le message ne peut pas être vide.');
+  }
 
   db.get('SELECT id FROM users WHERE username = ?', [to], (err, user) => {
     if (err || !user) return res.status(404).send('Destinataire non trouvé');

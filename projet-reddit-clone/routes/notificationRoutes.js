@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/database'); // Chemin vers ta connexion SQLite
-const { ensureAuthenticated } = require('../middlewares/auth');
+const { ensureAuthenticated } = require('../middlewares/authMiddlewarre');
 
 // 🔔 Afficher les notifications de l’utilisateur connecté
 router.get('/', ensureAuthenticated, (req, res) => {
