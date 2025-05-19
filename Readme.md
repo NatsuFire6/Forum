@@ -1,5 +1,7 @@
-lis pas stp |
-            v
+lis pas stp 
+
+    |
+    v
 
 
 trop tard !
