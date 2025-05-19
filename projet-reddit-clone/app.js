@@ -1,11 +1,12 @@
 // app.js
+//require('./config/init_db');
+require('./config/init_db_reddit');
 const express = require('express');
 const session = require('express-session');
 const SQLiteStore = require('connect-sqlite3')(session);
 const path = require('path');
 const app = express();
-require('./config/database');
-require('./config/init_db_reddit');
+
 
 
 // 📦 Configuration
