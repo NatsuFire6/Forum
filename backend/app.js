@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const postsRoutes = require('./routes/posts');
-const cors = require('cors');
 
-app.use(cors()); // pour autoriser le frontend à appeler l'API
+app.use(express.json()); // pour lire le JSON dans les body
 app.use('/api/posts', postsRoutes);
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Serveur lancé sur http://localhost:${PORT}`));
+app.listen(3000, () => {
+  console.log('Serveur lancé sur http://localhost:3000');
+});
