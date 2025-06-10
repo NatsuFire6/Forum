@@ -1,5 +1,8 @@
 const db = require('../database/db');
 
+// Controller pour gérer les posts
+
+// Récupérer tous les posts
 const getAllPosts = (req, res) => {
     db.all('SELECT * FROM posts ORDER BY date_publication DESC', (err, rows) => {
         if (err) {
@@ -10,6 +13,8 @@ const getAllPosts = (req, res) => {
     });
 };
 
+
+// Création d'un nouveau post
 const createPost = (req, res) => {
     const { titre, contenu, author_username } = req.body;
 
