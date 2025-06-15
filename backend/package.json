@@ -2,7 +2,7 @@
   "name": "forum",
   "version": "1.0.0",
   "description": "Salut",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
   "create-tables": "node database/tableCreation.js",
   "start": "node app.js",
