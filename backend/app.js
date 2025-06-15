@@ -11,7 +11,7 @@ const postRoutes = require('./routes/post');
 app.use('/api/posts', postRoutes); // → toutes requêtes /api/posts sera redirigé vers les routes post
 
 const userRoutes = require('./routes/user');
-app.use('/api/users', userRoutes); // bref t'a compris et on refait pareil pour tous le reste ↓
+app.use('/api/users', userRoutes); // bref t'a compris et on refait pareil pour tout le reste ↓
 
 const commentsRoutes = require('./routes/comments');
 app.use('/api/comments', commentsRoutes);
