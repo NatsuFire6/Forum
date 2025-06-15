@@ -1,7 +1,7 @@
 {
   "name": "forum",
   "version": "1.0.0",
-  "description": "Salut",
+  "description": "Un clone de reddid pour notre projet de fin d'année 2024-2025",
   "main": "app.js",
   "scripts": {
   "create-tables": "node database/tableCreation.js",
