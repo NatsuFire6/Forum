@@ -58,9 +58,39 @@ const createUser = (req, res) => {
         });
     };
 
+    const loginUser = (req, res) => {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Email et mot de passe sont requis' });
+        }
+
+        db.get('SELECT * FROM users WHERE email = ?', [email], (err, user) => {
+            if (err) {
+                console.error(err.message);
+                return res.status(500).json({ message: 'Erreur lors de la récupération de l\'utilisateur' });
+            }
+            if (!user) {
+                return res.status(404).json({ message: 'Utilisateur non trouvé' });
+            }
+
+            bcrypt.compare(password, user.password, (err, isMatch) => {
+                if (err) {
+                    console.error(err.message);
+                    return res.status(500).json({ message: 'Erreur lors de la comparaison des mots de passe' });
+                }
+                if (!isMatch) {
+                    return res.status(401).json({ message: 'Mot de passe incorrect' });
+                }
+                res.json({ message: 'Connexion réussie', userId: user.id });
+            });
+        });
+    };
+
     // Export des fonctions
     module.exports = {
         createUser,
         getOneUser,
-        getAllUsers
+        getAllUsers,
+        loginUser
     };
