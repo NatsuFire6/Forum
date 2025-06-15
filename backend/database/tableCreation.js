@@ -3,20 +3,20 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./ma_base.db');
 
 db.serialize(() => {
-  // Création de la table user
+  // Création de la table users
   db.run(`
-    CREATE TABLE IF NOT EXISTS user (
+    CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       mail TEXT NOT NULL UNIQUE,
       nom TEXT NOT NULL,
       age INTEGER,
-      username TEXT NOT NULL UNIQUE,
+      usersname TEXT NOT NULL UNIQUE,
       password TEXT NOT NULL,
       date_inscription TEXT NOT NULL DEFAULT (datetime('now'))
     )
   `, (err) => {
-    if (err) return console.error('Erreur création table user :', err.message);
-    console.log('Table "user" créée avec succès !');
+    if (err) return console.error('Erreur création table users :', err.message);
+    console.log('Table "users" créée avec succès !');
   });
 
   // Création de la table posts
@@ -28,7 +28,7 @@ db.serialize(() => {
       contenu TEXT NOT NULL,
       date_publication TEXT NOT NULL,
       likes INTEGER DEFAULT 0,
-      FOREIGN KEY (author_id) REFERENCES user(id)
+      FOREIGN KEY (author_id) REFERENCES users(id)
     )
   `, (err) => {
     if (err) return console.error('Erreur création table posts :', err.message);
@@ -41,11 +41,11 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     post_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
+    users_id INTEGER NOT NULL,
     content TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (post_id) REFERENCES posts(id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (users_id) REFERENCES users(id)
   )`
   , (err) => {
     if (err) return console.error('Erreur création table comments :', err.message);
@@ -76,10 +76,10 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS likes (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       post_id INTEGER NOT NULL,
-      user_id INTEGER NOT NULL,
+      users_id INTEGER NOT NULL,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (post_id) REFERENCES posts(id),
-      FOREIGN KEY (user_id) REFERENCES user(id)
+      FOREIGN KEY (users_id) REFERENCES users(id)
     )
   `, (err) => {
     if (err) return console.error('Erreur création table likes :', err.message);
