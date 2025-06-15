@@ -23,6 +23,15 @@ const messagesRoutes = require('./routes/messages');
 app.use('/api/messages', messagesRoutes);
 
 
+// lancer les pages html 
+
+const path = require('path');
+app.use(express.static(path.join(__dirname, '..front'))); 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../front/login.html')); // envoie la page de connexion au lancement du serveur
+});
+
+
 // démarrer le serveur
 const PORT = 3000;
 app.listen(PORT, () => {

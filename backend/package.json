@@ -4,9 +4,9 @@
   "description": "Un clone de reddid pour notre projet de fin d'année 2024-2025",
   "main": "app.js",
   "scripts": {
-  "create-tables": "node database/tableCreation.js",
-  "start": "node app.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
+    "create-tables": "node database/tableCreation.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/NatsuFire6/Forum#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "sqlite3": "^5.1.7"
   }
 }
