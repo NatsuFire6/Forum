@@ -2,11 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const db = require('./database/db.js'); // → connexion à la base de données
+require('./database/tableCreation.js'); // → création des tables si elles n'existent pas déjà
 const path = require('path');
+
 
 // Middleware
 app.use(cors());            // → autoriser les requêtes du front 
 app.use(express.json());    // pouvoir lire les requêtes en JSON tu connais
+
 
 
 // lancer les pages html 

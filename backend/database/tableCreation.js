@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 
-const db = new sqlite3.Database('./ma_base.db');
+const db = new sqlite3.Database('./database/ma_base.db');
+console.log('test.');
 
 db.serialize(() => {
   // Création de la table users
@@ -8,9 +9,7 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       mail TEXT NOT NULL UNIQUE,
-      nom TEXT NOT NULL,
-      age INTEGER,
-      usersname TEXT NOT NULL UNIQUE,
+      username TEXT NOT NULL UNIQUE,
       password TEXT NOT NULL,
       date_inscription TEXT NOT NULL DEFAULT (datetime('now'))
     )

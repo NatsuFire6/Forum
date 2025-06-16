@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt');
 
 // Création d'un utilisateur
 const createUser = (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, mail, password } = req.body;
 
-    if (!username || !email || !password) { 
+    if (!username || !mail || !password) { 
         return res.status(400).json({ message: 'Tous les champs sont requis' });
     }
 
@@ -18,15 +18,15 @@ const createUser = (req, res) => {
             return res.status(500).json({ message: "Erreur de hash du mot de passe" });
         }
 
-        const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
-        const params = [username, email, hashedPassword];
+        const query = 'INSERT INTO users (username, mail, password) VALUES (?, ?, ?)';
+        const params = [username, mail, hashedPassword];
 
         db.run(query, params, function(err) {
             if (err) {
                 console.error(err.message);
                 return res.status(500).json({ message: "Erreur lors de la création de l'utilisateur" });
             }
-            res.status(201).json({ id: this.lastID, username, email });
+            res.status(201).json({ id: this.lastID, username, mail });
         });
     });
 };
@@ -51,20 +51,20 @@ const createUser = (req, res) => {
         db.all('SELECT * FROM users', (err, rows) => {
             if (err) {
                 console.error(err.message);
-                return res.status(500).json({message: 'Erreur lors de la récupération des utilisateurs'});
+                return res.status(500).json({message: err});
             }
             res.json(rows);
         });
     };
 
     const loginUser = (req, res) => {
-        const { email, password } = req.body;
+        const { mail, password } = req.body;
 
-        if (!email || !password) {
-            return res.status(400).json({ message: 'Email et mot de passe sont requis' });
+        if (!mail || !password) {
+            return res.status(400).json({ message: 'mail et mot de passe sont requis' });
         }
 
-        db.get('SELECT * FROM users WHERE email = ?', [email], (err, user) => {
+        db.get('SELECT * FROM users WHERE mail = ?', [mail], (err, user) => {
             if (err) {
                 console.error(err.message);
                 return res.status(500).json({ message: 'Erreur lors de la récupération de l\'utilisateur' });
