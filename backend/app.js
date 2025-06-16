@@ -1,10 +1,21 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const db = require('./database/db.js'); // → connexion à la base de données
+const path = require('path');
 
 // Middleware
 app.use(cors());            // → autoriser les requêtes du front 
 app.use(express.json());    // pouvoir lire les requêtes en JSON tu connais
+
+
+// lancer les pages html 
+
+app.use(express.static(path.join(__dirname, '../front')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../front/login.html')); // envoie la page de connexion au lancement du serveur
+});
 
 // Routes
 const postRoutes = require('./routes/post');
@@ -21,15 +32,6 @@ app.use('/api/likes', likesRoutes);
 
 const messagesRoutes = require('./routes/messages');
 app.use('/api/messages', messagesRoutes);
-
-
-// lancer les pages html 
-
-const path = require('path');
-app.use(express.static(path.join(__dirname, '..front'))); 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../front/login.html')); // envoie la page de connexion au lancement du serveur
-});
 
 
 // démarrer le serveur

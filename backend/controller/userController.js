@@ -1,4 +1,4 @@
-const db = require('../database/db');
+const db = require('../database/db.js');
 const bcrypt = require('bcrypt');
 
 // Création d'un utilisateur
@@ -32,20 +32,19 @@ const createUser = (req, res) => {
 };
 
     // Récupération d'un utilisateur par son ID
-    const getOneUser = (req, res) => {
-        const userId = req.params.id;
-        db.get('SELECT * FROM users WHERE id = ?', [userId], (err, row) => {
-            if (err) {
-                console.error(err.message);
-                return res.status(500).json({message: 'Erreur lors de la récupération de l\'utilisateur'});
-            }
-            if (!row) {
-                return res.status(404).json({message: 'Utilisateur non trouvé'});
-            }
-            res.json(row);
+    const getUserByUsername = (req, res) => {
+    const username = req.params.username;
+    db.get('SELECT * FROM users WHERE username = ?', [username], (err, row) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).json({ message: "Erreur lors de la récupération de l'utilisateur" });
         }
-    );
-    };
+        if (!row) {
+            return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        }
+        res.json(row);
+    });
+};
 
     // récupération de tous les utilisateurs
     const getAllUsers = (req, res) => {
@@ -90,7 +89,7 @@ const createUser = (req, res) => {
     // Export des fonctions
     module.exports = {
         createUser,
-        getOneUser,
+        getUserByUsername,
         getAllUsers,
         loginUser
     };

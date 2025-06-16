@@ -1,4 +1,4 @@
-const db = require('../database/db');
+const db = require('../database/db.js');
 
 // Liker un post
 const likePost = (req, res) => {

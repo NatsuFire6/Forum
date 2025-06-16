@@ -1,4 +1,4 @@
-const db = require('../database/db');
+const db = require('../database/db.js');
 
 // Création d'un commentaire
     const createCommentary = (req, res) => {
