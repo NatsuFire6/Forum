@@ -5,7 +5,7 @@ const userController = require('../controller/userController');
 // du coup pareil mais la c'est les routes pour les users
 router.get('/', userController.getAllUsers);
 router.get('/username', userController.getUserByUsername);
-router.get('/id', userController.getUserId);
+router.get('/id/:id', userController.getUserById);
 router.post('/', userController.createUser);
 router.post('/login', userController.loginUser);
 
