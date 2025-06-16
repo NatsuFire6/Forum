@@ -57,8 +57,10 @@ header > div {
  <header>
   <h1>Bienvenue sur Reddit Clone</h1>
   <div>
-    <button id="createPostBtn">Créer un post</button>
-    <button id="profileBtn">Mon profil</button>
+    <a href="create_post.html"><button>Créer un post</button></a>
+    <a href="profile.html"><button>Mon Profil</button></a>
+
+
   </div>
 </header>
 
@@ -66,11 +68,35 @@ header > div {
   <main>
     <section id="postsContainer">
       <h2>Posts récents</h2>
+      <div class="post">
+      <h2>Paul Mirabelle et Iris Mittenaere ?</h2>
+        <p>Nan mais quel bg ce Paul</p>
+      </div>
+      <div class="post">
+        <h2>Formation Tortue</h2>
+        <p>La pose emblématique de Squezzie revient en force sur les réseaux sociaux grace a Kim Jung-un en ayant fait un symbole d'identité nationale.</p>
+      </div>
+      <div class="post">
+        <h2>Question technique</h2>
+        <p>Comment implémenter une authentification sécurisée avec JWT ?</p>
+      </div>
+      <div class="post">
+        <h2>Azeroth a besoin de vous !</h2>
+        <p>Rejoignez des millier de joueurs et affronter Xal'atath pour protéger le monde des ténèbres des dieux très anciens</p>
+      </div>
+      <div class="post">
+        <h2>GTA VI en 2026</h2>
+        <p>Non vous ne revez pas, la suite tant attendu des jeux Rockstar sort enfin !</p>
+      </div>
+      <div class="post">
+        <h2>Macron et Trump : un amour impossible ?</h2>
+        <p>Vous savez, nous savons... </p>
+
     </section>
   </main>
 
   <script>
-   // récupérer les posts depuis le backend 
+
     async function fetchPosts() {
       try {
         const response = await fetch('http://localhost:3000/routes/posts');
@@ -97,7 +123,7 @@ header > div {
       window.location.href = 'login.html';
     });
 
-    // Au chargement de la page, on récupère les posts
+
     window.onload = fetchPosts;
   </script>
 </body>
