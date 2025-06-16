@@ -27,7 +27,7 @@ router.get('/:username', (req, res) => {
             db.all(`SELECT * FROM followers WHERE follower_id = ?`, [userId], (err6, following) => {
               if (err6) return res.status(500).send("Erreur chargement abonnements.");
 
-              res.render('users/profile', {
+              res.render('user/profile', {
                 user,
                 posts,
                 comments,
