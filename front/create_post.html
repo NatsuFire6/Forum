@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Créer un post</title>
+  <link rel="stylesheet" href="./style/main.css" />
+</head>
+<body>
+  <header>
+    <h1>Créer un nouveau post</h1>
+    <button onclick="window.location.href='home.html'">Retour à l'accueil</button>
+  </header>
+
+  <main>
+    <form id="postForm">
+      <label for="title">Titre :</label>
+      <input type="text" id="title" name="title" required><br>
+
+      <label for="content">Contenu :</label><br>
+      <textarea id="content" name="content" rows="6" required></textarea><br>
+
+      <button type="submit">Publier</button>
+    </form>
+  </main>
+
+  <script src="./js/create_post.js"></script>
+</body>
+</html>

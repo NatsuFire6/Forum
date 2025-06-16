@@ -15,9 +15,10 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     if (response.ok) {
       alert("Connexion réussie !");
+      localStorage.setItem('userId', data.id); // Pareille ici je stocke l'ID de l'utilisateur
       window.location.href = "home.html";
     } else {
-      document.getElementById("error").textContent = data.message || "Erreur inconnue"; 
+      document.getElementById("error").textContent = data.message || "Connexion impossible"; 
     }
   } catch (error) {
     document.getElementById("error").textContent = "Erreur réseau ou serveur.";
