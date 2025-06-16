@@ -5,7 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const password = document.getElementById("password").value;
 
   try {
-    const response = await fetch("http://localhost:3000/api/users/login", {
+    const response = await fetch("http://localhost:3000/routes/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -15,7 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     if (response.ok) {
       alert("Connexion réussie !");
-      window.location.href = "posts.html";
+      window.location.href = "home.html";
     } else {
       document.getElementById("error").textContent = data.message || "Erreur inconnue";
     }

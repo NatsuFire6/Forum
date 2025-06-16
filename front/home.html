@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil - Clone Reddit</title>
+  <link rel="stylesheet" href="./style/main.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #dae0e6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #ff4500;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    header button {
+      background-color: #ffffff22;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    header button:hover {
+      background-color: #ffffff44;
+    }
+    main {
+      max-width: 700px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .post {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+    .post:last-child {
+      border-bottom: none;
+    }
+    .post h2 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      color: #ff4500;
+      cursor: pointer;
+    }
+    .post p {
+      margin: 0;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenue sur Reddit Clone</h1>
+    <button id="logoutBtn">Déconnexion</button>
+  </header>
+
+  <main>
+    <section id="postsContainer">
+      <h2>Posts récents</h2>
+    </section>
+  </main>
+
+  <script>
+   // récupérer les posts depuis le backend 
+    async function fetchPosts() {
+      try {
+        const response = await fetch('http://localhost:3000/routes/posts');
+        if (!response.ok) throw new Error('Erreur récupération posts');
+        const posts = await response.json();
+
+        const container = document.getElementById('postsContainer');
+        posts.forEach(post => {
+          const postEl = document.createElement('div');
+          postEl.className = 'post';
+          postEl.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.content}</p>
+          `;
+          container.appendChild(postEl);
+        });
+      } catch (error) {
+        console.error(error);
+        document.getElementById('postsContainer').innerHTML = '<p>Impossible de charger les posts.</p>';
+      }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      window.location.href = 'login.html';
+    });
+
+    // Au chargement de la page, on récupère les posts
+    window.onload = fetchPosts;
+  </script>
+</body>
+</html>
