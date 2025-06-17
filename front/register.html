@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inscription - Clone Reddit</title>
+  <link rel="stylesheet" href="./static/main.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>Inscription</h1>
+    <form id="registerForm">
+      <label for="username">Nom d'utilisateur</label>
+      <input type="text" id="username" required />
+
+      <label for="mail">Email</label>
+      <input type="mail" id="mail" required />
+
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" required />
+
+      <button type="submit">Créer un compte</button>
+      <p id="error" class="error-message"></p>
+    </form>
+  </div>
+
+  <script src="./js/register.js"></script>
+</body>
+</html>
